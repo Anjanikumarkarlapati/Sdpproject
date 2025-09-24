@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriPlan - Advanced Diet Solution</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="toast-container"></div>
+
+    <div id="login-screen" class="screen active">
+        <div class="login-container">
+            <h1>Welcome to NutriPlan</h1>
+            <p>Your personal guide to a balanced diet.</p>
+            <button id="login-as-user">Login as User</button>
+            <button id="login-as-admin">Login as Admin</button>
+            <button id="show-about-us">About Us</button>
+        </div>
+    </div>
+
+    <div id="about-us-screen" class="screen">
+        <div class="about-us-container">
+            <h2>About Us</h2>
+            <p>This project is created and maintained by:</p>
+            <div class="contact-info">
+                <p><strong>Name:</strong> Anjani Kumar</p>
+                <div class="contact-item">
+                    <p><strong>Phone:</strong> <span id="phone-number">+91 9182678478</span></p>
+                    <button class="copy-btn" data-target-id="phone-number">Copy</button>
+                </div>
+                <div class="contact-item">
+                    <p><strong>Email:</strong> <span id="email-address">anjanikumarkarlapati@gmail.com</span></p>
+                    <button class="copy-btn" data-target-id="email-address">Copy</button>
+                </div>
+            </div>
+            <button id="back-to-login">Back to Login</button>
+        </div>
+    </div>
+
+    <div id="user-dashboard" class="screen">
+        <header>
+            <div class="header-text">
+                <h1>Hi Let's track your day!</h1>
+                <p id="current-date"></p>
+            </div>
+            <button id="logout-user">Logout</button>
+        </header>
+
+        <main class="dashboard-grid">
+            <div class="card" id="food-logger">
+                <h2>Log Your Meal</h2>
+                <form id="log-food-form">
+                    <input type="text" id="food-name-input" placeholder="e.g., Apple" list="food-options" required>
+                    <datalist id="food-options"></datalist>
+                    <input type="number" id="food-quantity-input" placeholder="Quantity (e.g., 1)" min="1" required>
+                    <button type="submit">Add Food</button>
+                </form>
+                <div id="daily-log-list">
+                    <h3>Today's Log:</h3>
+                    <ul></ul>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="card" id="nutrient-summary">
+                    <h2>Today's Nutrient Intake</h2>
+                    <div id="macro-chart-container">
+                        <h3>Macronutrients</h3>
+                        <div class="chart-container">
+                            <div id="macro-donut-chart"></div>
+                            <div id="macro-legend">
+                                <div class="legend-item protein">Protein: <span id="protein-g">0g</span></div>
+                                <div class="legend-item carbs">Carbs: <span id="carbs-g">0g</span></div>
+                                <div class="legend-item fats">Fats: <span id="fats-g">0g</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nutrient-bars"></div>
+                </div>
+
+                <div class="card" id="recommendations">
+                    <h2>Recommendations & Insights</h2>
+                    <div id="recommendation-content">
+                        <p>Log a food item to get started!</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="admin-dashboard" class="screen">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <button id="logout-admin">Logout</button>
+        </header>
+        <main class="dashboard-grid admin-grid">
+            <div class="card">
+                <h2>Manage Nutritional Data</h2>
+                <form id="add-food-form" class="admin-form">
+                    <input type="text" id="admin-food-name" placeholder="Food Name" required>
+                    <input type="number" id="admin-calories" placeholder="Calories" required>
+                    <input type="number" id="admin-protein" placeholder="Protein (g)" required>
+                    <input type="number" id="admin-carbs" placeholder="Carbs (g)" required>
+                    <input type="number" id="admin-fats" placeholder="Fats (g)" required>
+                    <input type="number" id="admin-iron" placeholder="Iron (mg)" required>
+                    <input type="number" id="admin-vitamind" placeholder="Vitamin D (IU)" required>
+                    <button type="submit">Add Food to Database</button>
+                </form>
+            </div>
+            <div class="card">
+                <h2>User Health Overview</h2>
+                <table id="user-data-table">
+                    <thead><tr><th>User</th><th>Calories (Goal %)</th><th>Common Deficit</th></tr></thead>
+                    <tbody>
+                        <tr><td>A</td><td>75%</td><td>Iron</td></tr>
+                        <tr><td>B</td><td>110%</td><td>-</td></tr>
+                        <tr><td>C</td><td>60%</td><td>Vitamin D</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div id="details-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="modal-close-btn" class="modal-close">&times;</button>
+            <h2 id="modal-title">Nutritional Details</h2>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
